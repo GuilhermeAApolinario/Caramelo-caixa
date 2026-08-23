@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caixa HotDogs - Caramelo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Caixa HotDogs - Caramelo (Múltiplos Itens)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #FF6B6B;
@@ -17,161 +17,193 @@
             --text-muted: #7f8c8d;
             --border: #E0E6ED;
             --danger: #e74c3c;
+            --warning: #f1c40f;
         }
 
         * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--light-bg); color: var(--text-main); margin: 0; padding: 20px; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h1 { color: var(--dark); font-weight: 700; font-size: 2.2em; margin: 0; }
+        body { background-color: var(--light-bg); color: var(--text-main); margin: 0; padding: 15px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--dark); font-weight: 700; font-size: 2em; margin: 0; }
         .header p { color: var(--text-muted); margin: 5px 0 0 0; }
-        .container { max-width: 1200px; margin: auto; display: flex; gap: 25px; flex-wrap: wrap; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.04); flex: 1; min-width: 350px; border: 1px solid var(--border); }
         
-        .header-painel { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--light-bg); padding-bottom: 15px; margin-bottom: 25px; flex-wrap: wrap; gap: 10px;}
-        h2 { margin: 0; color: var(--dark); font-size: 1.5em; font-weight: 600; }
-        .filtro-data { display: flex; align-items: center; gap: 10px; background: var(--light-bg); padding: 5px 15px; border-radius: 8px; border: 1px solid var(--border); }
-        .filtro-data input { border: none; background: transparent; outline: none; font-weight: 600; color: var(--primary); font-size: 1em; cursor: pointer; }
+        .container { max-width: 1300px; margin: auto; display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start;}
+        .card { background: var(--card-bg); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); flex: 1; min-width: 340px; border: 1px solid var(--border); }
         
-        label { display: block; margin-top: 15px; font-weight: 600; color: var(--dark); font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px; }
-        input[type="date"], input[type="number"], select { width: 100%; padding: 12px 15px; margin-top: 8px; border: 1px solid var(--border); border-radius: 8px; font-size: 1em; background: var(--light-bg); color: var(--text-main); transition: all 0.3s; }
+        h2 { margin: 0 0 15px 0; color: var(--dark); font-size: 1.4em; font-weight: 600; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; }
+        
+        label { display: block; margin-top: 12px; font-weight: 600; color: var(--dark); font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.5px; }
+        input[type="date"], input[type="number"], select { width: 100%; padding: 10px 12px; margin-top: 5px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95em; background: var(--light-bg); transition: 0.2s; }
         input:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1); }
-        .checkbox-container { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-        .checkbox-item { display: flex; align-items: center; gap: 10px; background: var(--light-bg); padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: 0.2s; }
-        .checkbox-item:hover { border-color: var(--primary); }
-        .checkbox-item input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary); }
-        .checkbox-item label { margin: 0; cursor: pointer; font-weight: 400; text-transform: none; font-size: 1em; flex: 1; }
-        .total-destaque { margin-top: 25px; font-size: 1.2em; font-weight: 600; text-align: center; color: var(--dark); background: #fff5f5; padding: 20px; border-radius: 12px; border: 2px dashed var(--primary); }
-        .total-destaque span { font-size: 1.8em; color: var(--primary); display: block; margin-top: 5px; font-weight: 700; }
         
-        .btn-primary { background: var(--primary); color: #fff; border: none; padding: 16px 20px; font-size: 1.1em; width: 100%; border-radius: 10px; cursor: pointer; margin-top: 20px; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3); }
-        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4); }
-        .btn-secondary { background: var(--secondary); color: #fff; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3); transition: 0.3s;}
-        .btn-secondary:hover { background: #45b7af; }
-        .btn-outline { background: transparent; border: 2px solid var(--dark); color: var(--dark); box-shadow: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s;}
-        .btn-outline:hover { background: var(--dark); color: #fff; }
+        .checkbox-container { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+        .checkbox-item { display: flex; align-items: center; gap: 10px; background: var(--light-bg); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: 0.2s; }
+        .checkbox-item:hover { border-color: var(--primary); }
+        .checkbox-item input { width: 16px; height: 16px; cursor: pointer; accent-color: var(--primary); }
+        .checkbox-item label { margin: 0; cursor: pointer; font-weight: 400; text-transform: none; font-size: 0.95em; flex: 1; }
+        
+        .box-carrinho { background: #fdfbf7; border: 2px dashed #dcdde1; border-radius: 12px; padding: 15px; margin-top: 20px; }
+        .lista-itens { list-style: none; padding: 0; margin: 0 0 15px 0; max-height: 200px; overflow-y: auto;}
+        .lista-itens li { background: #fff; border: 1px solid var(--border); padding: 10px; border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.9em; box-shadow: 0 2px 4px rgba(0,0,0,0.02);}
+        .item-info { flex: 1; }
+        .item-preco { font-weight: 600; color: var(--primary); margin: 0 10px;}
+        .btn-remover-item { background: #fee2e2; color: var(--danger); border: none; border-radius: 6px; padding: 5px 8px; cursor: pointer; font-size: 0.8em; font-weight: 600;}
+        
+        .btn-add { background: var(--secondary); color: #fff; border: none; padding: 12px; font-size: 1em; width: 100%; border-radius: 8px; cursor: pointer; margin-top: 15px; font-weight: 600; transition: 0.3s; }
+        .btn-add:hover { background: #45b7af; }
+        
+        .pagamento-box { background: #f8f9fa; padding: 15px; border-radius: 12px; margin-top: 20px; border: 1px solid var(--border); }
+        
+        .total-destaque { margin-top: 15px; font-size: 1.1em; font-weight: 600; text-align: center; color: var(--dark); background: #fff5f5; padding: 15px; border-radius: 12px; border: 2px dashed var(--primary); }
+        .total-destaque span { font-size: 1.6em; color: var(--primary); display: block; margin-top: 5px; font-weight: 700; }
+        
+        .btn-primary { background: var(--primary); color: #fff; border: none; padding: 16px; font-size: 1.1em; width: 100%; border-radius: 10px; cursor: pointer; margin-top: 15px; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        
+        .btn-secondary { background: var(--secondary); color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        .btn-outline { background: transparent; border: 2px solid var(--dark); color: var(--dark); padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 600;}
         .btn-del { background: transparent; border: none; color: var(--danger); font-size: 1.2em; cursor: pointer; padding: 5px; border-radius: 4px; transition: 0.2s;}
-        .btn-del:hover { background: #fee2e2; }
-
-        .action-buttons { display: flex; gap: 10px; margin-top: 15px; }
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
-        .stat-card { background: var(--light-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
-        .stat-card p { margin: 0; color: var(--text-muted); font-size: 0.9em; font-weight: 600; text-transform: uppercase; }
-        .stat-card h3 { margin: 10px 0 0 0; font-size: 1.8em; color: var(--dark); }
+        
+        .header-painel { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;}
+        .filtro-data { display: flex; align-items: center; gap: 10px; background: var(--light-bg); padding: 5px 15px; border-radius: 8px; border: 1px solid var(--border); }
+        .filtro-data input { border: none; background: transparent; outline: none; font-weight: 600; color: var(--primary); font-size: 1em; }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: var(--light-bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
+        .stat-card p { margin: 0; color: var(--text-muted); font-size: 0.8em; font-weight: 600; text-transform: uppercase; }
+        .stat-card h3 { margin: 5px 0 0 0; font-size: 1.6em; color: var(--dark); }
         .stat-card.highlight h3 { color: var(--secondary); }
         
-        table { width: 100%; border-collapse: collapse; font-size: 0.9em; margin-top: 10px; }
-        th, td { padding: 15px 10px; text-align: left; border-bottom: 1px solid var(--border); }
-        th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.85em; letter-spacing: 0.5px; }
-        tr:last-child td { border-bottom: none; }
-        .badge { background: #e2e8f0; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 600; color: #475569; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+        th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+        .badge { background: #e2e8f0; padding: 4px 8px; border-radius: 12px; font-weight: 600; color: #475569; font-size: 0.9em;}
         .badge-local { background: #f39c12; color: white; }
+        .badge-troco { background: #8e44ad; color: white; font-size: 0.8em;}
         
-        #statusConexao { margin-top: 10px; font-size: 0.9em; text-align: center; color: #f39c12; font-weight: bold; }
+        #statusConexao { margin-top: 5px; font-size: 0.9em; text-align: center; font-weight: bold; }
 
-        /* REGRAS DE RESPONSIVIDADE PARA CELULAR */
-        @media (max-width: 850px) {
-            .painel-relatorio { 
-                display: none !important; /* Esconde o painel direito no celular */
-            }
-            .container { 
-                flex-direction: column; 
-            }
-            body {
-                padding: 10px;
-            }
-            .card {
-                padding: 20px;
-                min-width: 100%;
-            }
+        @media (max-width: 900px) {
+            .painel-relatorio { display: none !important; }
+            .container { flex-direction: column; }
+            .card { min-width: 100%; padding: 15px; }
         }
-
-        /* REGRAS PARA IMPRESSÃO */
         @media print {
             body { background: white; padding: 0; }
             .no-print { display: none !important; }
             .card { box-shadow: none; border: none; padding: 0; }
-            .print-area { width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <div class="header no-print">
-        <h1>🌭 Ponto de Venda - Caramelo</h1>
-        <p>Sistema Inteligente de Pedidos</p>
-        <div id="statusConexao">⏳ Conectando ao Banco de Dados...</div>
+        <h1>🌭 PDV - Caramelo</h1>
+        <p>Pedidos com Múltiplos Itens e Troco</p>
+        <div id="statusConexao" style="color:#f39c12;">⏳ Conectando...</div>
     </div>
 
     <div class="container">
-        <!-- Formulário (Esquerda) - SEMPRE VISÍVEL -->
-        <div class="card no-print">
-            <h2>🛒 Novo Pedido</h2>
+        <!-- ÁREA DE LANÇAMENTO (Esquerda) -->
+        <div class="card no-print" style="flex: 1.2;">
+            <h2>🛒 Montar Pedido</h2>
             
-            <label>Data da Venda</label>
-            <input type="date" id="dataVenda">
-
-            <label>Local / Atendente</label>
-            <select id="localVenda">
-                <option value="Maria">👩‍🍳 Maria</option>
-                <option value="Casa da Pizza">🍕 Casa da Pizza</option>
-            </select>
-
-            <label>Sabor do Cachorro Quente</label>
-            <select id="categoria" onchange="atualizarTotal()">
-                <option value="Tradicional" data-preco="15">🌭 Tradicional - R$ 15,00</option>
-                <option value="Clássico" data-preco="18">🌭 Clássico - R$ 18,00</option>
-                <option value="Especial" data-preco="22">🌭 Especial - R$ 22,00</option>
-            </select>
-
-            <label>Adicionais (+ R$ 5,00/cada)</label>
-            <div class="checkbox-container">
-                <div class="checkbox-item" onclick="document.getElementById('addBacon').click()">
-                    <input type="checkbox" id="addBacon" value="Bacon" onchange="atualizarTotal(); event.stopPropagation();"> 
-                    <label>🥓 Bacon em Tiras</label>
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label>Data</label>
+                    <input type="date" id="dataVenda">
                 </div>
-                <div class="checkbox-item" onclick="document.getElementById('addCatupiry').click()">
-                    <input type="checkbox" id="addCatupiry" value="Catupiry" onchange="atualizarTotal(); event.stopPropagation();"> 
-                    <label>🧀 Catupiry Original</label>
+                <div style="flex: 1;">
+                    <label>Local</label>
+                    <select id="localVenda">
+                        <option value="Maria">👩‍🍳 Maria</option>
+                        <option value="Casa da Pizza">🍕 Casa da Pizza</option>
+                    </select>
                 </div>
             </div>
 
-            <label>Bebidas</label>
-            <div class="checkbox-container">
-                <div class="checkbox-item" onclick="document.getElementById('addRefri').click()">
-                    <input type="checkbox" id="addRefri" onchange="toggleRefriPrice(); atualizarTotal(); event.stopPropagation();"> 
-                    <label>🥤 Adicionar Refrigerante</label>
+            <!-- Produto atual a ser adicionado -->
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid var(--border);">
+                <label style="margin-top:0;">1. Adicionar Lanche / Bebida</label>
+                <select id="categoria">
+                    <option value="Tradicional" data-preco="15">🌭 Tradicional - R$ 15,00</option>
+                    <option value="Clássico" data-preco="18">🌭 Clássico - R$ 18,00</option>
+                    <option value="Especial" data-preco="22">🌭 Especial - R$ 22,00</option>
+                </select>
+
+                <div class="checkbox-container">
+                    <div class="checkbox-item" onclick="document.getElementById('addBacon').click()">
+                        <input type="checkbox" id="addBacon" value="Bacon" onclick="event.stopPropagation();"> 
+                        <label>🥓 Bacon (+ R$ 5,00)</label>
+                    </div>
+                    <div class="checkbox-item" onclick="document.getElementById('addCatupiry').click()">
+                        <input type="checkbox" id="addCatupiry" value="Catupiry" onclick="event.stopPropagation();"> 
+                        <label>🧀 Catupiry (+ R$ 5,00)</label>
+                    </div>
+                    <div class="checkbox-item" onclick="document.getElementById('addRefri').click()">
+                        <input type="checkbox" id="addRefri" onchange="toggleRefriPrice(); event.stopPropagation();"> 
+                        <label>🥤 Adicionar Refrigerante</label>
+                    </div>
+                </div>
+                
+                <div id="divRefriPreco" style="display:none; margin-top: 8px;">
+                    <label style="margin-top:0;">Valor do Refri (R$)</label>
+                    <input type="number" id="precoRefri" value="5" min="0" step="0.50">
+                </div>
+
+                <button class="btn-add" onclick="adicionarAoCarrinho()">➕ Adicionar Item ao Pedido</button>
+            </div>
+
+            <!-- Resumo do Carrinho -->
+            <div class="box-carrinho">
+                <label style="margin-top:0;">2. Itens do Pedido Atual</label>
+                <ul class="lista-itens" id="listaCarrinho">
+                    <li style="justify-content:center; color:#999; font-size:0.9em; box-shadow:none; border:none; background:transparent;">Nenhum item adicionado ainda.</li>
+                </ul>
+                <div class="total-destaque" style="margin-top: 0; padding: 10px;">
+                    Total do Pedido
+                    <span id="totalPedido">R$ 0,00</span>
                 </div>
             </div>
-            
-            <div id="divRefriPreco" style="display:none; margin-top: 10px; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
-                <label style="margin-top:0;">Valor do Refrigerante (R$)</label>
-                <input type="number" id="precoRefri" value="5" min="0" step="0.50" onchange="atualizarTotal()">
+
+            <!-- Pagamento e Troco -->
+            <div class="pagamento-box">
+                <label style="margin-top:0;">3. Forma de Pagamento</label>
+                <select id="pagamento" onchange="verificarTroco()">
+                    <option value="Pix">📱 Pix</option>
+                    <option value="Dinheiro">💵 Dinheiro</option>
+                    <option value="Crédito">💳 Cartão de Crédito</option>
+                    <option value="Débito">💳 Cartão de Débito</option>
+                </select>
+
+                <div id="blocoDinheiro" style="display:none; margin-top: 15px; border-top: 1px solid var(--border); padding-top: 10px;">
+                    <label>Valor Recebido (R$)</label>
+                    <input type="number" id="valorRecebido" placeholder="Ex: 50.00" step="0.50" onkeyup="calcularTroco()" onchange="calcularTroco()">
+                    
+                    <div style="display:flex; gap: 10px; margin-top: 10px;">
+                        <div style="flex:1;">
+                            <label>Troco a Devolver</label>
+                            <div id="valorTroco" style="font-size: 1.2em; font-weight: bold; color: var(--danger); padding: 8px; background: #fee2e2; border-radius: 8px; text-align: center;">R$ 0,00</div>
+                        </div>
+                        <div style="flex:1;">
+                            <label>Forma do Troco</label>
+                            <select id="formaTroco">
+                                <option value="Dinheiro">💵 Em Dinheiro</option>
+                                <option value="Pix">📱 Em Pix</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <label>Pagamento</label>
-            <select id="pagamento">
-                <option value="Pix">📱 Pix</option>
-                <option value="Dinheiro">💵 Dinheiro</option>
-                <option value="Crédito">💳 Cartão de Crédito</option>
-                <option value="Débito">💳 Cartão de Débito</option>
-            </select>
-
-            <div class="total-destaque">
-                Total a Cobrar
-                <span id="totalPedido">R$ 15,00</span>
-            </div>
-
-            <button class="btn-primary" onclick="adicionarVenda()">Finalizar Venda 🚀</button>
+            <button class="btn-primary" onclick="finalizarPedido()">✅ Finalizar Pedido Completo</button>
         </div>
 
-        <!-- Dashboard e Relatório (Direita) - ESCONDIDO NO CELULAR (.painel-relatorio) -->
-        <div class="card print-area painel-relatorio" style="flex: 1.8;">
-            
-            <!-- CABEÇALHO DO PAINEL COM FILTRO DE DATA -->
+        <!-- PAINEL RELATÓRIO (Direita) -->
+        <div class="card print-area painel-relatorio" style="flex: 2;">
             <div class="header-painel">
                 <h2>📊 Relatório do Caixa</h2>
-                <div class="filtro-data no-print" title="Escolha um dia para consultar as vendas">
-                    <span>📅 Consultar dia:</span>
+                <div class="filtro-data no-print">
+                    <span>📅 Dia:</span>
                     <input type="date" id="dataFiltro" onchange="renderizarTabela()">
                 </div>
             </div>
@@ -182,46 +214,42 @@
                     <h3 id="resumoQtd">0</h3>
                 </div>
                 <div class="stat-card highlight">
-                    <p>Receita do Dia</p>
+                    <p>Receita Bruta do Dia</p>
                     <h3 id="resumoValor">R$ 0,00</h3>
                 </div>
             </div>
 
-            <div class="action-buttons no-print">
-                <button class="btn-secondary" onclick="baixarPlanilha()">📥 Exportar Dia</button>
-                <button class="btn-outline" onclick="window.print()">🖨️ Imprimir Resumo</button>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;" class="no-print">
+                <button class="btn-secondary" onclick="baixarPlanilha()">📥 Exportar Excel</button>
+                <button class="btn-outline" onclick="window.print()">🖨️ Imprimir</button>
             </div>
 
-            <h3 style="margin-top: 30px; color: var(--dark); font-size: 1.2em;">📝 Histórico de Pedidos (<span id="dataTabelaTexto">-</span>)</h3>
             <div style="overflow-x:auto;">
                 <table id="tabelaVendas">
                     <thead>
                         <tr>
                             <th>Local</th>
-                            <th>Produto</th>
-                            <th>Adicionais</th>
-                            <th>Bebida</th>
+                            <th style="min-width: 200px;">Itens do Pedido</th>
                             <th>Pagamento</th>
-                            <th>Valor</th>
-                            <th class="no-print">Ação</th>
+                            <th>Troco Detalhes</th>
+                            <th>Total Pedido</th>
+                            <th class="no-print">🗑️</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Linhas geradas via JS e Firebase -->
+                        <!-- Linhas geradas via JS -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- 1. IMPORTAÇÃO DO FIREBASE -->
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
-        // =========================================================================
-        // 2. CONFIGURAÇÃO DO FIREBASE (Projeto Caramelo)
-        // =========================================================================
+        // CONFIGURAÇÃO FIREBASE CARAMELO
         const firebaseConfig = {
           apiKey: "AIzaSyD7BK29fTPlGncEzamYz2sofuLjGUNqjRM",
           authDomain: "caramelo-controle.firebaseapp.com",
@@ -229,208 +257,283 @@
           projectId: "caramelo-controle",
           storageBucket: "caramelo-controle.firebasestorage.app",
           messagingSenderId: "861734596831",
-          appId: "1:861734596831:web:cffbed20c2557521cab96a",
-          measurementId: "G-0EJYRB2Q3B"
+          appId: "1:861734596831:web:cffbed20c2557521cab96a"
         };
 
         let db;
         let vendas = []; 
+        let carrinho = []; // ARRAY PARA GUARDAR MULTIPLOS ITENS DO MESMO PEDIDO
 
         try {
             firebase.initializeApp(firebaseConfig);
             db = firebase.firestore();
-            document.getElementById('statusConexao').innerText = "✅ Banco de Dados 'Caramelo' Conectado!";
+            document.getElementById('statusConexao').innerText = "✅ Banco Conectado!";
             document.getElementById('statusConexao').style.color = "#27ae60";
             escutarMudancasBanco(); 
         } catch (error) {
             document.getElementById('statusConexao').innerText = "❌ Erro ao conectar: " + error.message;
-            document.getElementById('statusConexao').style.color = "#e74c3c";
         }
 
-        // =========================================================================
-        // 3. INICIALIZAÇÃO DAS DATAS
-        // =========================================================================
+        // INIT DATAS
         const hoje = new Date();
         document.getElementById('dataVenda').valueAsDate = hoje;
         document.getElementById('dataFiltro').valueAsDate = hoje;
 
-        function formatarDataBrasileira(dataISO) {
-            if(!dataISO) return '-';
-            const [ano, mes, dia] = dataISO.split('-');
-            return `${dia}/${mes}/${ano}`;
+        function formatarDataBR(iso) {
+            if(!iso) return '-';
+            const [a, m, d] = iso.split('-'); return `${d}/${m}/${a}`;
+        }
+        function formataMoeda(valor) {
+            return `R$ ${valor.toFixed(2).replace('.', ',')}`;
         }
 
-        // =========================================================================
-        // 4. LÓGICA DO CARRINHO (Total da Venda)
-        // =========================================================================
+        // ==========================================
+        // LÓGICA DO CARRINHO
+        // ==========================================
         function toggleRefriPrice() {
-            const div = document.getElementById('divRefriPreco');
-            div.style.display = document.getElementById('addRefri').checked ? 'block' : 'none';
+            document.getElementById('divRefriPreco').style.display = document.getElementById('addRefri').checked ? 'block' : 'none';
         }
 
-        function calcularTotalPedido() {
+        function adicionarAoCarrinho() {
             const selectCat = document.getElementById('categoria');
-            let total = parseFloat(selectCat.options[selectCat.selectedIndex].getAttribute('data-preco'));
-            if(document.getElementById('addBacon').checked) total += 5;
-            if(document.getElementById('addCatupiry').checked) total += 5;
-            if(document.getElementById('addRefri').checked) {
-                total += parseFloat(document.getElementById('precoRefri').value) || 0;
-            }
-            return total;
-        }
-
-        function atualizarTotal() {
-            const total = calcularTotalPedido();
-            document.getElementById('totalPedido').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-        }
-
-        // =========================================================================
-        // 5. C.R.U.D FIREBASE (Criar, Ler, Deletar)
-        // =========================================================================
-        function adicionarVenda() {
-            if(!db) { alert("Erro de conexão com o Firebase."); return; }
-
-            const data = document.getElementById('dataVenda').value;
-            const local = document.getElementById('localVenda').value;
-            const categoria = document.getElementById('categoria').options[document.getElementById('categoria').selectedIndex].text.split(' - ')[0].replace('🌭 ', '');
-            const pagamento = document.getElementById('pagamento').options[document.getElementById('pagamento').selectedIndex].text;
+            const nomeCat = selectCat.options[selectCat.selectedIndex].text.split(' - ')[0].replace('🌭 ', '');
+            let precoBase = parseFloat(selectCat.options[selectCat.selectedIndex].getAttribute('data-preco'));
             
             let adicionais = [];
-            if(document.getElementById('addBacon').checked) adicionais.push('Bacon');
-            if(document.getElementById('addCatupiry').checked) adicionais.push('Catupiry');
+            if(document.getElementById('addBacon').checked) { adicionais.push('Bacon'); precoBase += 5; }
+            if(document.getElementById('addCatupiry').checked) { adicionais.push('Catupiry'); precoBase += 5; }
             
             let refri = document.getElementById('addRefri').checked;
-            let valorRefri = refri ? (parseFloat(document.getElementById('precoRefri').value) || 0) : 0;
+            let precoRefri = refri ? (parseFloat(document.getElementById('precoRefri').value) || 0) : 0;
+            if(refri) { adicionais.push(`Refri(+R$${precoRefri})`); precoBase += precoRefri; }
+
+            const itemDesc = `${nomeCat} ${adicionais.length > 0 ? '('+adicionais.join(', ')+')' : ''}`;
             
-            const novaVenda = {
-                data: data,
-                local: local,
-                categoria: categoria,
-                adicionais: adicionais.length > 0 ? adicionais.join(' + ') : '-',
-                refri: refri ? `Sim (R$ ${valorRefri.toFixed(2).replace('.', ',')})` : '-',
+            carrinho.push({
+                id: Date.now(),
+                descricao: itemDesc,
+                valor: precoBase
+            });
+
+            // Reseta form do lanche
+            document.getElementById('addBacon').checked = false;
+            document.getElementById('addCatupiry').checked = false;
+            document.getElementById('addRefri').checked = false;
+            document.getElementById('categoria').selectedIndex = 0;
+            toggleRefriPrice();
+
+            renderizarCarrinho();
+        }
+
+        function removerDoCarrinho(idItem) {
+            carrinho = carrinho.filter(i => i.id !== idItem);
+            renderizarCarrinho();
+        }
+
+        function renderizarCarrinho() {
+            const ul = document.getElementById('listaCarrinho');
+            ul.innerHTML = '';
+            let total = 0;
+
+            if(carrinho.length === 0) {
+                ul.innerHTML = '<li style="justify-content:center; color:#999; box-shadow:none; border:none; background:transparent;">Nenhum item adicionado ainda.</li>';
+                document.getElementById('totalPedido').innerText = 'R$ 0,00';
+                calcularTroco();
+                return;
+            }
+
+            carrinho.forEach(item => {
+                total += item.valor;
+                ul.innerHTML += `
+                    <li>
+                        <div class="item-info">✔️ ${item.descricao}</div>
+                        <div class="item-preco">${formataMoeda(item.valor)}</div>
+                        <button class="btn-remover-item" onclick="removerDoCarrinho(${item.id})">X</button>
+                    </li>
+                `;
+            });
+            document.getElementById('totalPedido').innerText = formataMoeda(total);
+            calcularTroco(); // Atualiza troco se já houver valor digitado
+        }
+
+        function getTotalCarrinho() {
+            return carrinho.reduce((acc, curr) => acc + curr.valor, 0);
+        }
+
+        // ==========================================
+        // LÓGICA DE PAGAMENTO E TROCO
+        // ==========================================
+        function verificarTroco() {
+            const pag = document.getElementById('pagamento').value;
+            const bloco = document.getElementById('blocoDinheiro');
+            if(pag === 'Dinheiro') {
+                bloco.style.display = 'block';
+                document.getElementById('valorRecebido').focus();
+            } else {
+                bloco.style.display = 'none';
+                document.getElementById('valorRecebido').value = '';
+                document.getElementById('valorTroco').innerText = 'R$ 0,00';
+            }
+        }
+
+        function calcularTroco() {
+            if(document.getElementById('pagamento').value !== 'Dinheiro') return;
+            
+            const total = getTotalCarrinho();
+            const recebido = parseFloat(document.getElementById('valorRecebido').value) || 0;
+            let troco = recebido - total;
+            
+            if(troco < 0) troco = 0; // Não mostra negativo se o cliente não deu dinheiro suficiente ainda
+            
+            document.getElementById('valorTroco').innerText = formataMoeda(troco);
+        }
+
+        // ==========================================
+        // FIREBASE - SALVAR E LER
+        // ==========================================
+        function finalizarPedido() {
+            if(!db) { alert("Sem conexão com banco."); return; }
+            if(carrinho.length === 0) { alert("O pedido está vazio! Adicione lanches primeiro."); return; }
+
+            const totalPedido = getTotalCarrinho();
+            const pagamento = document.getElementById('pagamento').value;
+            
+            let recebido = 0;
+            let troco = 0;
+            let formaDoTroco = '-';
+
+            if(pagamento === 'Dinheiro') {
+                recebido = parseFloat(document.getElementById('valorRecebido').value) || 0;
+                if(recebido < totalPedido) {
+                    alert("O valor recebido é menor que o total do pedido!");
+                    return;
+                }
+                troco = recebido - totalPedido;
+                formaDoTroco = document.getElementById('formaTroco').value;
+            }
+
+            // Junta todos os itens em um texto só para salvar na tabela
+            const itensTexto = carrinho.map(i => i.descricao).join(' | ');
+
+            const novoPedido = {
+                data: document.getElementById('dataVenda').value,
+                local: document.getElementById('localVenda').value,
+                itens: itensTexto, // Lista de itens convertida em texto
+                total: totalPedido,
                 pagamento: pagamento,
-                total: calcularTotalPedido(),
+                valorRecebido: recebido,
+                trocoCalculado: troco,
+                formaDoTroco: formaDoTroco,
                 criadoEm: firebase.firestore.FieldValue.serverTimestamp()
             };
 
-            db.collection("vendas").add(novaVenda)
+            db.collection("vendas").add(novoPedido)
                 .then(() => {
-                    // Reseta opções, mas mantém Data e Local
-                    document.getElementById('addBacon').checked = false;
-                    document.getElementById('addCatupiry').checked = false;
-                    document.getElementById('addRefri').checked = false;
-                    document.getElementById('categoria').selectedIndex = 0;
-                    toggleRefriPrice();
-                    atualizarTotal();
+                    // Limpar Pedido
+                    carrinho = [];
+                    renderizarCarrinho();
+                    document.getElementById('pagamento').selectedIndex = 0;
+                    verificarTroco();
                     
-                    if(document.getElementById('dataFiltro').value !== data) {
-                        document.getElementById('dataFiltro').value = data;
+                    // Ajusta filtro
+                    if(document.getElementById('dataFiltro').value !== novoPedido.data) {
+                        document.getElementById('dataFiltro').value = novoPedido.data;
                         renderizarTabela();
                     }
                     
-                    // Aviso visual leve para mobile
                     const btn = document.querySelector('.btn-primary');
-                    const textoOriginal = btn.innerText;
-                    btn.innerText = "✅ Salvo com Sucesso!";
+                    btn.innerText = "✅ Pedido Salvo!";
                     btn.style.background = "#27ae60";
-                    setTimeout(() => {
-                        btn.innerText = textoOriginal;
-                        btn.style.background = "var(--primary)";
-                    }, 2000);
+                    setTimeout(() => { btn.innerText = "✅ Finalizar Pedido Completo"; btn.style.background = "var(--primary)"; }, 2000);
                 })
-                .catch((error) => { alert("Erro ao salvar: " + error.message); });
+                .catch((e) => alert("Erro: " + e.message));
         }
 
-        function deletarVenda(idVenda) {
-            if(confirm("Tem certeza que deseja apagar este pedido do caixa? Esta ação não pode ser desfeita.")) {
-                db.collection("vendas").doc(idVenda).delete()
-                .then(() => { console.log("Venda deletada"); })
-                .catch((error) => { alert("Erro ao apagar: " + error.message); });
-            }
+        function deletarVenda(id) {
+            if(confirm("Apagar este pedido?")) db.collection("vendas").doc(id).delete();
         }
 
         function escutarMudancasBanco() {
-            db.collection("vendas").orderBy("criadoEm", "asc").onSnapshot((querySnapshot) => {
+            db.collection("vendas").orderBy("criadoEm", "asc").onSnapshot((qs) => {
                 vendas = []; 
-                querySnapshot.forEach((doc) => {
-                    vendas.push({ id: doc.id, ...doc.data() });
-                });
+                qs.forEach((doc) => vendas.push({ id: doc.id, ...doc.data() }));
                 renderizarTabela(); 
             });
         }
 
-        // =========================================================================
-        // 6. RENDERIZAÇÃO DA TELA
-        // =========================================================================
+        // ==========================================
+        // RENDERIZAÇÃO E EXPORTAÇÃO
+        // ==========================================
         function renderizarTabela() {
-            const dataConsulta = document.getElementById('dataFiltro').value;
-            const dataFormatada = formatarDataBrasileira(dataConsulta);
-            
-            document.getElementById('dataResumoTexto').innerText = dataFormatada;
-            document.getElementById('dataTabelaTexto').innerText = dataFormatada;
+            const dataFiltro = document.getElementById('dataFiltro').value;
+            document.getElementById('dataResumoTexto').innerText = formatarDataBR(dataFiltro);
             
             const tbody = document.querySelector('#tabelaVendas tbody');
             tbody.innerHTML = '';
-            let qtdDia = 0;
-            let totalDia = 0;
+            let qtd = 0; let total = 0;
 
-            const vendasDoDia = vendas.filter(v => v.data === dataConsulta).reverse();
+            const vendasFiltro = vendas.filter(v => v.data === dataFiltro).reverse();
 
-            vendasDoDia.forEach(v => {
-                qtdDia++;
-                totalDia += v.total;
+            vendasFiltro.forEach(v => {
+                qtd++; total += v.total;
                 
-                const localText = v.local ? v.local : '-';
-                
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><span class="badge badge-local">${localText}</span></td>
-                    <td><strong>${v.categoria}</strong></td>
-                    <td style="color: #64748b; font-size: 0.9em;">${v.adicionais}</td>
-                    <td style="color: #64748b; font-size: 0.9em;">${v.refri}</td>
-                    <td><span class="badge">${v.pagamento}</span></td>
-                    <td><strong>R$ ${v.total.toFixed(2).replace('.', ',')}</strong></td>
-                    <td class="no-print">
-                        <button class="btn-del" onclick="deletarVenda('${v.id}')" title="Apagar Pedido">🗑️</button>
-                    </td>
+                let detalhesTroco = '-';
+                if(v.pagamento === 'Dinheiro') {
+                    detalhesTroco = `
+                        <div style="font-size:0.85em; color:#555;">
+                            Rec: ${formataMoeda(v.valorRecebido)}<br>
+                            Troco: <span style="color:var(--danger); font-weight:bold;">${formataMoeda(v.trocoCalculado)}</span><br>
+                            <span class="badge badge-troco">Via ${v.formaDoTroco}</span>
+                        </div>
+                    `;
+                }
+
+                // Cria visualização amigável dos itens dividindo pelo ' | '
+                let itensHtml = (v.itens || '-').split(' | ').map(item => `<div style="margin-bottom:4px;">🔹 ${item}</div>`).join('');
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td><span class="badge badge-local">${v.local || '-'}</span></td>
+                        <td style="font-size: 0.9em; line-height:1.3;">${itensHtml}</td>
+                        <td><span class="badge">${v.pagamento}</span></td>
+                        <td>${detalhesTroco}</td>
+                        <td><strong>${formataMoeda(v.total)}</strong></td>
+                        <td class="no-print"><button class="btn-del" onclick="deletarVenda('${v.id}')">🗑️</button></td>
+                    </tr>
                 `;
-                tbody.appendChild(tr);
             });
 
-            if (vendasDoDia.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: #94a3b8; padding: 30px;">Nenhuma venda registrada para o dia ${dataFormatada}.</td></tr>`;
+            if (vendasFiltro.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding: 20px;">Nenhum pedido neste dia.</td></tr>`;
             }
 
-            document.getElementById('resumoQtd').innerText = qtdDia;
-            document.getElementById('resumoValor').innerText = `R$ ${totalDia.toFixed(2).replace('.', ',')}`;
+            document.getElementById('resumoQtd').innerText = qtd;
+            document.getElementById('resumoValor').innerText = formataMoeda(total);
         }
 
         function baixarPlanilha() {
-            const dataConsulta = document.getElementById('dataFiltro').value;
-            const vendasDoDia = vendas.filter(v => v.data === dataConsulta);
+            const dataFiltro = document.getElementById('dataFiltro').value;
+            const vendasFiltro = vendas.filter(v => v.data === dataFiltro);
+            if(vendasFiltro.length === 0) return alert("Sem dados.");
             
-            if(vendasDoDia.length === 0) {
-                alert("Não há vendas neste dia para exportar.");
-                return;
-            }
-            let csvContent = "Data,Local,Produto,Adicionais,Bebida,Pagamento,Valor Total
+            let csv = "Data,Local,Itens do Pedido,Pagamento,Valor Recebido,Troco Devolvido,Forma do Troco,Total Cobrado
 ";
-            vendasDoDia.forEach(v => {
-                let local = v.local || '-';
-                let linha = `${v.data},${local},${v.categoria},${v.adicionais},${v.refri},${v.pagamento},${v.total.toFixed(2)}`;
-                csvContent += linha + "
-";
+            vendasFiltro.forEach(v => {
+                // Colocamos os itens entre aspas duplas pro Excel não bugar com as vírgulas
+                let itensProtegidos = `"${v.itens || '-'}"`; 
+                let recebido = v.pagamento === 'Dinheiro' ? v.valorRecebido : 0;
+                let troco = v.pagamento === 'Dinheiro' ? v.trocoCalculado : 0;
+                let ft = v.pagamento === 'Dinheiro' ? v.formaDoTroco : '-';
+                
+                csv += `${v.data},${v.local || '-'},${itensProtegidos},${v.pagamento},${recebido},${troco},${ft},${v.total.toFixed(2)}
+`;
             });
             
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
-            const url = URL.createObjectURL(blob);
-            link.setAttribute("href", url);
-            link.setAttribute("download", `Fechamento_Caixa_${dataConsulta}.csv`);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
+            link.href = URL.createObjectURL(blob);
+            link.download = `Relatorio_Caixa_${dataFiltro}.csv`;
             link.click();
-            document.body.removeChild(link);
         }
     </script>
 </body>
