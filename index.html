@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caixa HotDogs - Caramelo</title>
     
+    <!-- Importando a biblioteca html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Importando a biblioteca html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <!-- Importa a fonte do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -149,7 +154,8 @@
 
             <div style="display: flex; gap: 10px; margin-bottom: 20px;" class="no-print">
                 <button class="btn-secondary" onclick="baixarPlanilha()">📥 Exportar Excel</button>
-                <button class="btn-outline" onclick="window.print()">🖨️ Imprimir</button>
+                <button class="btn-outline" onclick="imprimirRelatorio()">🖨️ Imprimir</button>
+                <button class="btn-primary" onclick="gerarPDFRelatorio()" style="background-color: #e74c3c;">📄 Baixar PDF</button>
             </div>
 
             <!-- Tabela de Vendas -->

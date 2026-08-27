@@ -342,3 +342,30 @@ function baixarPlanilha() {
     link.download = `Fechamento_Caramelo_${dataFiltro}.csv`;
     link.click();
 }
+
+/* ========================================================
+   SESSÃO DE GERAÇÃO DE PDF
+   ======================================================== */
+
+function gerarPDFRelatorio() {
+    // Seleciona a área do relatório do caixa (a div da direita)
+    const elemento = document.querySelector('.print-area');
+
+    // Configurações do PDF
+    const opcoes = {
+        margin:       10,
+        filename:     'relatorio-caixa-caramelo.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' } // 'landscape' deixa a folha deitada, ideal para tabelas
+    };
+
+    // Executa a conversão e o download
+    html2pdf().from(elemento).set(opcoes).save();
+}
+
+// Função segura para imprimir apenas o painel de relatório
+function imprimirRelatorio() {
+    // Garante que o painel está visível antes de chamar a impressão
+    window.print();
+}

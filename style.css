@@ -106,7 +106,34 @@ th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
    14. CONFIGURAÇÃO DE IMPRESSÃO
    ======================================================== */
 @media print {
-    body { background: white; padding: 0; }
-    .no-print { display: none !important; } /* Esconde botoes e form na hora de imprimir */
-    .card { box-shadow: none; border: none; padding: 0; }
+    /* Reseta a página para impressão */
+    body { 
+        background: white; 
+        padding: 0; 
+        color: black;
+    }
+    
+    /* Esconde tudo o que tem a classe no-print */
+    .no-print { 
+        display: none !important; 
+    } 
+    
+    /* Remove sombras e bordas dos cards para ficar com cara de relatório impresso */
+    .card { 
+        box-shadow: none; 
+        border: none; 
+        padding: 0; 
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* FORÇA O PAINEL DE RELATÓRIO A APARECER NA IMPRESSÃO */
+    .print-area {
+        display: block !important;
+        visibility: visible !important;
+        width: 100% !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
